@@ -30,8 +30,19 @@
  *
  */
 
- $(function(){
+$(document).ready(function() {
 
- 	//code goes here
-
- })
+   //bootstrap data table plugin
+    $('#employeeTable').DataTable({
+    	dom: 'Bfrtip',
+    	"scrollX": true,
+    	buttons: [
+        'copy', 'csv', 'excel', 'pdf', 'print' 
+    	],
+    	 colReorder: true
+    });
+} );
+//DOM displays buttons
+//buttons[] contains buttons we wish to have on page
+//scrollX includes horizontal scroll bar
+//colReorder allows column reorder

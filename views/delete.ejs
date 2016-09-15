@@ -13,10 +13,10 @@
   <form action="/delete" method="POST">
     <div class="form-group">
       <label for="employeeId">SELECT AN EMPLOYEE TO DELETE</label><br/>
-      <select id="id" name="id">
+      <select id="id" name="id" class="selectpicker" data-live-search="true" data-header="Select an employee to delete.">
       <% if(typeof employees != "undefined" && employees.length > 0){ %>
         <% employees.forEach(function(employee){ %>
-          <option value="<%= employee.id %>">
+          <option data-icon="glyphicon-thumbs-down" data-subtext="<%= employee.email %>" value="<%= employee.id %>">
             <%= employee.lastName + ", " +  employee.firstName %>
           </option>
         <% }) %>

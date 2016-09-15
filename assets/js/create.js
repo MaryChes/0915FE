@@ -1,4 +1,4 @@
-/**
+ /**
  * Use the jQuery Validate plugin to add validation to the form
  *
  * Here's what this you will need to do:
@@ -31,7 +31,58 @@
  */
 
  $(function(){
+	jQuery.validator.addMethod("passwordCheck", function(value, element) {
+  
+  return this.optional( element ) || /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^\&*\)\(+=._-])[0-9a-zA-Z!@#\$%\^\&*\)\(+=._-]{8,}$/.test( value );
+      }, 'Please enter a valid password address.');
 
- 	//code goes here
+	$( "#addEmployeeForm" ).validate({
+         rules: {
+           firstName: {
+               required: true,
+                minlength: 2
+           },
+
+           lastName: {
+                required: true,
+                minlength: 2
+           },
+
+           email: {
+               	required: true,
+                email: true
+           },
+
+           homePhone: {
+      			required: true,
+      			phoneUS: true
+    		  },
+
+    		cellPhone: {
+      			required: true,
+      			phoneUS: true
+    		},
+
+    		password: {
+    			required: true,
+    			minlength: 8,
+    			passwordCheck: true
+    		},
+
+    		verifyPassword: {
+      			equalTo: "#password"
+    		}
+         },
+
+  		errorClass: "text-danger",
+
+  		 messages: {
+    	 	password: {
+    	 		passwordCheck: "Password should be at least 8 characters, 1 upppercase, 1 lowercase, 1 special character, and one number",
+    	 		required: "Required! We wish to keep the profile safe."
+  				}
+		}
+       
+    });
 
  })
